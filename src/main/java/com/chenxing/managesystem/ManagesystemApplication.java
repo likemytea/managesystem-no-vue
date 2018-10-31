@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 /**
- * 为了适应 ie8，不使用vue的版本
- * 
- * 
+ * .为了适应 ie8，不使用vue的版本
  */
 
 @EnableFeignClients
