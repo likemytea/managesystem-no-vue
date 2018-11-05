@@ -1,0 +1,6 @@
+1.prpperties文件
+#关闭activiti自动部署扫描
+spring.activiti.check-process-definitions=false
+2.启动类配置@ImportResource(locations = { "classpath:activiti.cfg.xml" }) // 引入xml配置文件
+   在resources下 新建 activiti.cfg.xml
+3.org.activiti.my.identity包下的 四个自定义类（两个工程方法，两个实现类，用来覆盖被继承的类中的方法）

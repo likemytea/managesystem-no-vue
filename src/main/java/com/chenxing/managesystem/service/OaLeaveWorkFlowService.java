@@ -57,6 +57,7 @@ public class OaLeaveWorkFlowService {
 
 	// 开始流程，传入申请者的id以及公司的id
 	public void startProcess(Leave leave) throws Exception {
+		log.info("777" + identityService.checkPassword("admin", "admin"));
 		leave.setId(Long.parseLong(PrimarykeyGenerated.generateId(false)));
 		leave.setApplyTime(new Date());
 		ProcessInstance processInstance = null;
