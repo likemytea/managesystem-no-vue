@@ -10,6 +10,8 @@
             name="dataSource"
             ref="dataSourcep3" />
     </bean>
+    <bean id="uuidGenerator" class="org.activiti.engine.impl.persistence.StrongUuidGenerator"></bean>
+    
     <!-- aaaa
     <bean
         id="ddddd"
@@ -30,6 +32,7 @@
     <bean
         id="processEngineConfiguration"
         class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="idGenerator" ref="uuidGenerator"></property>
         <property
             name="dataSource"
             ref="dataSourcep3" />
