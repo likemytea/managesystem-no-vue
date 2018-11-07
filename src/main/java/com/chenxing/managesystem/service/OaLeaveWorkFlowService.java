@@ -69,7 +69,7 @@ public class OaLeaveWorkFlowService {
 		identityService.setAuthenticatedUserId(leave.getUserId());
 
 		// 启动流程
-		processInstance = runtimeService.startProcessInstanceByKey(keyOaLeave, String.valueOf(leave.getId()),
+		processInstance = runtimeService.startProcessInstanceByKey(leave.getReason(), String.valueOf(leave.getId()),
 				variables);
 		leave.setProcessInstanceId(processInstance.getId());
 		int count = oaLeaveDao.insertOaLeave(leave);

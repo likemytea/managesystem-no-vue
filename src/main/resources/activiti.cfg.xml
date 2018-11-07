@@ -33,6 +33,7 @@
         id="processEngineConfiguration"
         class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="idGenerator" ref="uuidGenerator"></property>
+        <property name="jdbcMaxActiveConnections" value="100" />
         <property
             name="dataSource"
             ref="dataSourcep3" />
@@ -60,6 +61,13 @@
                 </bean>
             </list>
         </property>
+        
+        <property name="eventListeners">
+          <list>
+            <ref bean="globalEventListener"/>
+          </list>
+        </property>        
+        
     </bean>
     <bean
         id="customUserEntityManager"
@@ -69,4 +77,20 @@
         id="customGroupEntityManager"
         class="org.activiti.my.identity.CustomGroupEntityManager">
     </bean>
+    
+    <bean id="globalEventListener" class="com.chenxing.managesystem.listener.GlobalEventListener">
+       <property name="handlers">
+          <map>
+           <entry key="TASK_CREATED" value="taskCreateListener"/>
+           <entry key="TASK_COMPLETED" value="taskCompleteListener"/>
+           <entry key="TASK_ASSIGNED" value="taskAssignedListener"/>
+           <entry key="PROCESS_COMPLETED" value="processCompleteListener"/>
+           <entry key="ACTIVITY_STARTED" value="activityStartedListener"/>
+           <entry key="ACTIVITY_COMPLETED" value="activityCompletedListener"/>
+           <entry key="ACTIVITY_SIGNALED" value="activitySignaledListener"/>
+          </map>
+     </property>
+      </bean>    
+    
+    
 </beans>
