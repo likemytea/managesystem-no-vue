@@ -85,11 +85,12 @@ public class FlowLeaveController {
 	 * @return
 	 */
 	@RequestMapping(value = "/complete", method = { RequestMethod.POST, RequestMethod.GET })
-	public String execTask(@RequestParam String taskid, Variable var) {
+	public String execTask(@RequestParam String taskid, @RequestParam String designatedExecutor, Variable var) {
 		if (StringUtils.isEmpty(taskid)) {
 			return "paramError";
 		}
 		Map<String, Object> variables = var.getVariableMap();
+		variables.put("designatedExecutor", designatedExecutor);
 		oaLeaveWorkFlowService.complete(taskid, variables);
 		return "finished";
 	}

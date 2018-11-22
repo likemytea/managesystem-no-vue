@@ -39,7 +39,10 @@
             <td>{{item.processInstanceMap.suspended ? "已挂起" : "正常" }}；<b title='流程版本号'>V: {{item.processDefinitionMap.version }}</b></td>
             <td>
             <button v-if="item.task.taskName!='发起人调整申请'" v-on:click="execTask(item.task.taskId,item.id)" class="btn btn-default" >办理</button>
-            <button v-if="item.task.taskName=='发起人调整申请'" v-on:click="reApply(item.task.taskId,item.id,4)" class="btn btn-default" >调整申请</button>
+            <button v-if="item.task.taskName=='发起人调整申请'" v-on:click="reApply(item.task.taskId,item.id,1,'a')" class="btn btn-default" >驳回到部门经理审批</button>
+            <button v-if="item.task.taskName=='发起人调整申请'" v-on:click="reApply(item.task.taskId,item.id,2,'aa')" class="btn btn-default" >流程结束</button>
+            <button v-if="item.task.taskName=='发起人调整申请'" v-on:click="reApply(item.task.taskId,item.id,3,'aaa')" class="btn btn-default" >交给hr审批</button>
+            <button v-if="item.task.taskName=='发起人调整申请'" v-on:click="reApply(item.task.taskId,item.id,4,'aaaa')" class="btn btn-default" >交给发起人销假</button>
             <button v-on:click="deleteItem(item.id)" class="btn btn-default" >删除</button>
             </td>
           </tr>

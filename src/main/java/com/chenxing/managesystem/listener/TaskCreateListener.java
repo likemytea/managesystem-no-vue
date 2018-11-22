@@ -14,8 +14,10 @@ public class TaskCreateListener implements EventHandler {
 		// TODO Auto-generated method stub
 		ActivitiEntityEventImpl eventImpl = (ActivitiEntityEventImpl) event;
 		TaskEntity taskEntity = (TaskEntity) eventImpl.getEntity();
-		logger.info("xx" + taskEntity.getVariable("reason"));
-		taskEntity.addCandidateGroup("user");
+		logger.info("流程定义id{},被指派人{}", taskEntity.getVariable("reason"), taskEntity.getVariable("designatedExecutor"));
+
+		taskEntity.addCandidateUser((String) taskEntity.getVariable("designatedExecutor"));
+		// taskEntity.addCandidateGroup("user");
 		logger.info("create task is..... " + taskEntity.getName() + " key is:" + taskEntity.getTaskDefinitionKey());
 		logger.info("enter the task create listener ---->" + event.getType().name());
 	}

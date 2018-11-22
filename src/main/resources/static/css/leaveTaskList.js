@@ -25,17 +25,20 @@
           execTask:function ($taskid,$busskey){
         	  alert('可以根据业务id获取表单信息'+$busskey);
         	    var $beok = false;
+        	    var $executor = '';
         	    if (confirm('同意点击确定，不同意选择取消')){
         	    	$beok = true;
+        	    	$executor = 'aaa';//同意就hr审批
         	    }else{
         	    	$beok = false;
+        	    	$executor = 'admin';//不同意就发起人调整申请
         	    }
      	        var $res = '';
      		   	 $.ajax({
      			     type:'post',
      			     url:'http://localhost:8060/workflow/leave/complete',
      			     async: false,
-     			     data:{taskid:$taskid,keys:'agree',values:$beok,types:'B'},
+     			     data:{taskid:$taskid,keys:'agree',values:$beok,types:'B',designatedExecutor:$executor},
      			     cache:false,
      			     dataType:'json',
      			     success:function(data){
@@ -53,15 +56,15 @@
      		   		alert('系统异常，请联系运维人员！');
      		   	 }
          },
-         reApply:function ($taskid,$busskey,$input){
-       	  alert('可以根据业务id获取表单信息'+$busskey+'|输入路由为：'+$input);
+         reApply:function ($taskid,$busskey,$input,$executor){
+       	  alert('可以根据业务id获取表单信息'+$busskey+'|输入路由为：'+$input+'|executor:'+$executor);
        	    var $beok = false;
     	        var $res = '';
     		   	 $.ajax({
     			     type:'post',
     			     url:'http://localhost:8060/workflow/leave/complete',
     			     async: false,
-    			     data:{taskid:$taskid,keys:'input',values:$input,types:'S'},
+    			     data:{taskid:$taskid,keys:'input',values:$input,types:'S',designatedExecutor:$executor},
     			     cache:false,
     			     dataType:'json',
     			     success:function(data){

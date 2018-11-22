@@ -39,7 +39,7 @@ public class GlobalEventListener implements ActivitiEventListener {
 				handler.handle(event);
 			}
 		} else {
-			logger.info("nihaobbb啊");
+			logger.info("xxxx");
 		}
 	}
 

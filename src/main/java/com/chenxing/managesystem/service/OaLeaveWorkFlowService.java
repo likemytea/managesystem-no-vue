@@ -64,6 +64,8 @@ public class OaLeaveWorkFlowService {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		variables.put("applyTime", leave.getApplyTime());
 		variables.put("reason", leave.getReason());
+		// 这里写死了，实际应该从前端传过来的，这里指定成 经理 --》a
+		variables.put("designatedExecutor", "a");
 		// TODO;liuxing注意在servicetrycatch时对事务的影响
 		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
 		identityService.setAuthenticatedUserId(leave.getUserId());
