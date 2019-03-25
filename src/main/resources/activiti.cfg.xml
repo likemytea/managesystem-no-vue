@@ -10,7 +10,8 @@
             name="dataSource"
             ref="dataSourcep3" />
     </bean>
-    <bean id="uuidGenerator" class="org.activiti.engine.impl.persistence.StrongUuidGenerator"></bean>
+    <!-- <bean id="uuidGenerator" class="org.activiti.engine.impl.persistence.StrongUuidGenerator"></bean> -->
+    <bean id="uuidGenerator" class="com.chenxing.managesystem.overriding.MyUuidGenerator"></bean>
     
     <!-- aaaa
     <bean

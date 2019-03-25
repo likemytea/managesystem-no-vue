@@ -85,7 +85,10 @@ public class OaLeaveWorkFlowService {
 	@Transactional(readOnly = true)
 	public PageResult<Leave> getTasks(String assignee, long currentpage, long pagesize) {
 		PageResult<Leave> resRtn = new PageResult<Leave>();
-		TaskQuery taskQuery = taskService.createTaskQuery().taskCandidateOrAssigned(assignee);
+		 TaskQuery taskQuery =
+		 taskService.createTaskQuery().taskCandidateOrAssigned(assignee);
+//		TaskQuery taskQuery = taskService.createTaskQuery().taskCandidateOrAssigned(assignee)
+//				.taskDefinitionKey("sid-BC9F062C-5B1E-41B8-AC52-44924E383137");
 		resRtn.setTotalCount(taskQuery.count());
 		PageUtil pageUtil = new PageUtil(pagesize, currentpage, resRtn.getTotalCount());
 		resRtn.setTotalPage(pageUtil.getPageCount());
