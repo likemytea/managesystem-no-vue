@@ -27,13 +27,12 @@ public class FileController {
 	public void downloadFile(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		String input = request.getParameter("input");
-		int x = 1 / 0;
 		String fileName = input + ".docx";// 文件名
 		if (fileName != null) {
 			// 设置文件路径
 			File file = new File("E:\\" + fileName);
 			if (file.exists()) {
-				response.setContentType("application/force-download");// 设置强制下载不打开
+				// response.setContentType("application/force-download");// 设置强制下载不打开
 				response.addHeader("Content-Disposition",
 						"attachment;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1"));
 				// response.addHeader("Content-Disposition", "attachment;fileName=" +
